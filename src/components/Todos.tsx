@@ -1,12 +1,13 @@
-import { todoList } from '../recoil/store';
+import { filteredTodoList, todoList } from '../recoil/store';
 import { setTodosInLocal } from '../utils/todos';
 import AddTodo from './AddTodo';
 import TodoItem from './TodoItem';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import * as uuid from 'uuid';
 
 export default function Todos() {
   const [todos, setTodos] = useRecoilState(todoList);
+  const filteredTodos = useRecoilValue(filteredTodoList);
 
   const handleTodoCheck = (id: string) => {
     const changed = todos.map((todo) => {
@@ -29,7 +30,7 @@ export default function Todos() {
   return (
     <>
       <ul>
-        {todos.map((todo) => (
+        {filteredTodos.map((todo) => (
           <TodoItem
             key={todo.id}
             todo={todo}
