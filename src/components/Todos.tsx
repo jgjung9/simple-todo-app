@@ -3,6 +3,7 @@ import { setTodosInLocal } from '../utils/todos';
 import AddTodo from './AddTodo';
 import TodoItem from './TodoItem';
 import { useRecoilState } from 'recoil';
+import * as uuid from 'uuid';
 
 export default function Todos() {
   const [todos, setTodos] = useRecoilState(todoList);
@@ -19,6 +20,11 @@ export default function Todos() {
     setTodos(deleted);
     setTodosInLocal(deleted);
   };
+  const handleTodoAdd = (text: string) => {
+    const added = [...todos, { id: uuid.v4(), text, isComplete: false }];
+    setTodos(added);
+    setTodosInLocal(added);
+  };
 
   return (
     <>
@@ -32,7 +38,7 @@ export default function Todos() {
           />
         ))}
       </ul>
-      <AddTodo />
+      <AddTodo onAdd={handleTodoAdd} />
     </>
   );
 }
