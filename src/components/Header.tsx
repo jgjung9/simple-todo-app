@@ -1,11 +1,11 @@
 import { BsSunFill, BsMoonFill } from 'react-icons/bs';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useSetRecoilState } from 'recoil';
 import { darkModeState, filterState } from '../recoil/store';
 import { setColorTheme } from '../utils/darkMode';
 
 export default function Header() {
   const [darkMode, setDarkMode] = useRecoilState(darkModeState);
-  const [filter, setFilter] = useRecoilState(filterState);
+  const setFilter = useSetRecoilState(filterState);
 
   const handleDarkMode = () => {
     setDarkMode(!darkMode);

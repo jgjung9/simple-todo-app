@@ -29,7 +29,7 @@ export default function Todos() {
   return (
     <>
       <ul>
-        {moktodos.map((todo) => (
+        {todos.map((todo) => (
           <TodoItem
             key={todo.id}
             todo={todo}
@@ -42,21 +42,3 @@ export default function Todos() {
     </>
   );
 }
-
-const moktodos = [
-  {
-    id: '123',
-    text: 'test',
-    isComplete: false,
-  },
-  {
-    id: '124',
-    text: 'test2',
-    isComplete: false,
-  },
-  {
-    id: '125',
-    text: 'test3',
-    isComplete: false,
-  },
-];
