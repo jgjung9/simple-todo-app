@@ -1,5 +1,6 @@
 import { atom, selector } from 'recoil';
 import { getInitialDarkMode } from '../utils/darkMode';
+import { getTodosInLocal } from '../utils/todos';
 
 export const darkModeState = atom({
   key: 'darkMode',
@@ -19,7 +20,7 @@ export interface Todo {
 
 export const todoList = atom<Todo[]>({
   key: 'todoList',
-  default: [],
+  default: getTodosInLocal(),
 });
 
 export const filteredTodoList = selector<Todo[]>({
